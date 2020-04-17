@@ -1,0 +1,240 @@
+
+%% Beginning of file 'sample63.tex'
+%%
+%% Modified 2019 June
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.3 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
+%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
+%% All of these external packages should already be present in the modern TeX 
+%% distributions.  If not they can also be obtained at www.ctan.org.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%%
+%% using aastex version 6.3
+\documentclass[twocolumn]{aastex63}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be invoked like this:
+%%
+%% \documentclass[arguments]{aastex63}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Preferred style for Research Notes which are by design 
+%%                lacking an abstract and brief. DO NOT use \begin{abstract}
+%%                and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default
+%%   linenumbers  : turn on lineno package.
+%%   trackchanges : required to see the revision mark up and print its output
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
+%%                  for dual anonymous review.
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex63}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+\received{March 24, 2020}
+
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+
+
+%% For manuscript that include authors in collaborations, AASTeX v6.3
+%% builds on the \collaboration command to allow greater freedom to 
+%% keep the traditional author+affiliation information but only show
+%% subsets. The \collaboration command now must appear AFTER the group
+%% of authors in the collaboration and it takes TWO arguments. The last
+%% is still the collaboration identifier. The text given in this
+%% argument is what will be shown in the manuscript. The first argument
+%% is the number of author above the \collaboration command to show with
+%% the collaboration text. If there are authors that are not part of any
+%% collaboration the \nocollaboration command is used. This command takes
+%% one argument which is also the number of authors above to show. A
+%% dashed line is shown to indicate no collaboration. This example manuscript
+%% shows how these commands work to display specific set of authors 
+%% on the front page.
+%%
+%% For manuscript without any need to use \collaboration the 
+%% \AuthorCollaborationLimit command from v6.2 can still be used to 
+%% show a subset of authors.
+%
+%\AuthorCollaborationLimit=2
+%
+%% will only show Schwarz & Muench on the front page of the manuscript
+%% (assuming the \collaboration and \nocollaboration commands are
+%% commented out).
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\begin{document}
+
+\title{The kinematics of the stellar disk particles in the MW/M31 galaxy major merger remnant}
+
+\keywords{Galaxy Merger, Major Merger, Merger Remnant, Velocity Dispersion, Rapid/Slow Rotator}
+
+
+
+
+
+\author{Madison Walder}
+
+
+
+%% Sorry if none of this is coherent, I have an exam tomorrow and another project due in a few days.  The world is a bit too much right now so my brain is on overload, I plan on making this paper much nicer at a later time though.  
+\section{Introduction} \label{sec:intro}
+
+As is well known throughout the astronomy community, The Milky Way (MW) and Andromeda (M31) are set on a course to collide in a spectacular galaxy merger event $\sim$4-5 billion years from now \citep{2012ApJ...753....8V}.  This galaxy merger is classified as a major merger given that the colliding spiral galaxies have approximately the same mass. Luckily, we can determine what this collision will look like and how the aftermath (i.e. the merger remnant) will behave dynamically through simulations.  Specifically, they allow for the analysis of the stellar kinematics of the remnant.  The stellar remnant's kinematical properties such as its velocity dispersion $\sigma$, the spread of velocities around the average velocity of the stars, can allow for the determination of whether the remnant will be a fast or slow rotator.  A fast rotator is defined as a system where velocity and dispersion are quite similar (V/$\sigma$ $\rightarrow$ 1), whereas a slow rotator is a system that is dispersion dominated (V/$\sigma$ \textless 0.6). 
+
+
+Analyzing the stellar kinematics of a major merger remnant is incredibly important to our understanding of galaxies and galaxy evolution.  A galaxy is defined by \cite{2012AJ....144...76W} as: \textit{A gravitationally bound set of stars whose properties cannot be explained by the combination of baryons and Newton's laws of gravity}.  Galaxy evolution is the study of how galactic properties (such as the stars, morphology, internal kinematics, black hole, gas content etc.) change over time. A major merger event of two spiral (late-type) galaxies such as that of the MW and M31 will drastically alter the galactic properties of both galaxies, especially their internal kinematics.  Generally, early-type galaxies (ellipticals) have more random stellar motions whereas the stars of late-type galaxies (spirals) have more structured rotational motions.  Depending on the type of binary merger event, like whether it is a "wet" merger (the coalescence of two gas-rich spiral galaxies) or "dry" merger (the coalescence of two gas-poor galaxies), the kinematics of the merger remnant can have numerous possibilities.  A wet merger can supply the amount of gas needed to conserve the angular momentum of the system for the remnant to have a significant amount of rotation.  It also is currently believed to lead to the formation of low luminosity ellipticals.   However, the kinematics of a dry merger event (such as the MW/M31 collision) are not believed to be the same.        
+
+Since the MW/M31 merger will be "dry", it is theorized that the collision will increase the velocity dispersion of the system and the remnant will not have the gas needed to conserve angular momentum.  A current dominating theory for wet mergers is referred to as the "merger hypothesis", which states that the merging of two equal-mass, gas rich spiral galaxies forms an elliptical galaxy \citep{1972ApJ...178..623T}.  This is supported by \cite{2006ApJ...650..791C} who used numerical simulations to study the kinematics of major merger events between gas-rich and gas-poor mergers (referred to as dissipational and dissipationless respectively in the paper).  As shown in Figure 1, they found that the simulations of gas-rich major mergers with masses 20 times smaller or 30 times larger than $\sim$ 10\textsuperscript{12}$M_{\odot}$ successfully replicated the observed kinematic properties of more massive ellipticals.  As shown in Figure 1, they found that the simulations of gas-rich remnants successfully replicated the observed kinematic properties elliptical galaxies, while gas-poor remnants did not. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.55]{Cox_figure.png}
+    \caption{Histogram of (V/$\sigma$) for both gas-poor (blue) and gas-rich (red) remnant simulations overplotted with data from observed ellipticals and spheroids (black).  The red and black histograms are much more similar than the blue one, thus supporting that the simulations of the gas-rich mergers better emulated the stellar motions of ellipticals. \citep{2006ApJ...650..791C}.}
+    \label{fig:my_label}
+\end{figure}
+
+Many of the open questions in this field have to do with the accuracy of the "merger hypothesis" predicting the correct formation of ellipticals.  For example, one thing it does not account for is the apparent lack of a dark matter halo observed in certain ellipticals \citep{2003Sci...301.1696R}.  \textit{What happens to a galaxy's dark matter halo during a merger event?}. For this project, some major open questions I hope to help answer are: \textit{What will the Milky Way and M31 remnant look like?} and \textit{How will the merger remnant behave kinematically?}  Currently, astrophysicists attempt to answer these questions through numerical integration simulations to allow us to "see" into the future of the system after the collision.  These simulations include assumptions of physics that follow Newton's laws of gravity as well as Cold Dark Matter Theory (the theory that dark matter only interacts with matter gravitationally).    
+
+\section{This Project} \label{sec:style}
+
+This paper will be focusing on some specific aspects of the stellar kinematics after the MW and M31 have coalesced, specifically at Snapshot 575 which is $\sim$8.5 Gyr from now.  I plan on using simulation data to determine the velocity dispersion as a function of radius in the remnant, whether the remnant is rotating, as well as whether the remnant will be a fast or slow rotator.  The stellar kinematics to be analyzed will be the velocity of particles and the dispersion of the velocities.
+
+Following the description above, I plan to address how the stellar merger remnant will behave kinematically in this project.  Specifically in terms of velocity dispersion and rotation. 
+
+In terms of galaxy evolution, studying how the merger remnant behaves kinematically after the galaxies have become one allows us to take into account that the interactions of galaxies with each other can drastically change the morphology and dynamics of each.  It can also give us insight into why the kinematics of large ellipticals look the way they do.  
+
+\section{Methodology} \label{sec:style}
+
+The simulation data used in this paper was generated by \cite{2012ApJ...753....8V} who used it to determine the velocity vector of M31 with respect to the Milky Way.  One part of their project was using an N-body model, a simulation of the motions of N particles under the influence of gravity in this case, to simulate the internal mechanics of M31. They used their simulation to determine the trajectory and behaviors of the MW, M31, and M33.        
+
+I will create a phase diagram of velocity dispersion vs. radius for a given axis at Snapshot 575.  I will also determine whether the remnant is rotating as well as whether it is a fast or slow rotator by calculating the (V/$\sigma$) ratio along a given axis for the remnant, where V is the average velocity along that axis.  Figure 2 shows a phase diagram of the velocity component oriented out of the page vs. a position axis, after reorienting the remnant so that the angular momentum vector is aligned with the z-axis, I will make a plot like this for each velocity and position component to determine the mean velocity and dispersion along each axis.  
+
+\vspace{3mm} %3mm vertical space
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.36]{M31DiskVelocity.png}
+    \caption{Phase diagram of M31's y-component of velocity vs. x-component of position.  You can determine the mean velocity along the axis (as well as the velocity dispersion) using a diagram like this.}
+    \label{fig:my_label}
+\end{figure}
+
+%% Stopped at Paragraph 3 and 4 in methodology.  My brain has officially stopped working.  Apologies for submitting incomplete work, I'll come back to it I just need to get it in for now.
+
+
+I believe that the MW/M31 remnant will be rotating since both the MW and M31 have their own angular momentum, then there is no possible way it will be devoid of angular momentum.  For the velocity dispersion of the remnant as a function of radius, I believe that it will decrease at further radii as seen in \cite{2003Sci...301.1696R}.  As for the classification of whether the remnant will be a fast or slow rotator, I believe that it will be a slow rotator since the merger between M31 and the MW will have very little gas.   
+
+
+
+
+\bibliography{sample63}{}
+\bibliographystyle{aasjournal}
+
+
+
+\end{document}
+
+
