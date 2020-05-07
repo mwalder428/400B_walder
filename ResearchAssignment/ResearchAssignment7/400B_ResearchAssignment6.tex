@@ -1,0 +1,302 @@
+
+%% Beginning of file 'sample63.tex'
+%%
+%% Modified 2019 June
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.3 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
+%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
+%% All of these external packages should already be present in the modern TeX 
+%% distributions.  If not they can also be obtained at www.ctan.org.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%%
+%% using aastex version 6.3
+\documentclass[twocolumn]{aastex63}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be invoked like this:
+%%
+%% \documentclass[arguments]{aastex63}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Preferred style for Research Notes which are by design 
+%%                lacking an abstract and brief. DO NOT use \begin{abstract}
+%%                and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default
+%%   linenumbers  : turn on lineno package.
+%%   trackchanges : required to see the revision mark up and print its output
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
+%%                  for dual anonymous review.
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex63}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+\received{May 6, 2020}
+
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+
+
+%% For manuscript that include authors in collaborations, AASTeX v6.3
+%% builds on the \collaboration command to allow greater freedom to 
+%% keep the traditional author+affiliation information but only show
+%% subsets. The \collaboration command now must appear AFTER the group
+%% of authors in the collaboration and it takes TWO arguments. The last
+%% is still the collaboration identifier. The text given in this
+%% argument is what will be shown in the manuscript. The first argument
+%% is the number of author above the \collaboration command to show with
+%% the collaboration text. If there are authors that are not part of any
+%% collaboration the \nocollaboration command is used. This command takes
+%% one argument which is also the number of authors above to show. A
+%% dashed line is shown to indicate no collaboration. This example manuscript
+%% shows how these commands work to display specific set of authors 
+%% on the front page.
+%%
+%% For manuscript without any need to use \collaboration the 
+%% \AuthorCollaborationLimit command from v6.2 can still be used to 
+%% show a subset of authors.
+%
+%\AuthorCollaborationLimit=2
+%
+%% will only show Schwarz & Muench on the front page of the manuscript
+%% (assuming the \collaboration and \nocollaboration commands are
+%% commented out).
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\begin{document}
+
+\title{The kinematics of the stellar disk particles in the MW/M31 galaxy major merger remnant}
+
+\keywords{Galaxy Merger, Major Merger, Merger Remnant, Velocity Dispersion, Rapid/Slow Rotator}
+
+
+
+
+
+\author{Madison Walder}
+
+
+
+\begin{abstract}
+    The kinematics of stars that will result from the major merger of the Milky Way and the Andromeda galaxy is a topic that we cannot know for certain, however there are some aspects about the motions of the stars in the remnant that can be predicted through N-body simulations of the galactic collision and its aftermath.  Analyzing the kinematics of disk stars in the MW/M31 merger remnant is important because it allows us to better understand what happens when two similarly massive and dry (gas-poor) galaxies collide.  In this paper, I will be determining whether the MW/M31 remnant will be rotating and if it is, whether it will be classified as a fast or slow rotator.  Knowing the answer to this question can help solidify a theory as to what forms after a dry major merger event, akin to the "merger hypothesis" for wet major merger events.  After analyzing the velocity and dispersion properties of the remnant stars at $\sim$ 12 Gyr from now, I found that the remnant will indeed be rotating.  It will also have a \(\frac{Vy_{max}}{\sigma_{tot}}\) ratio equal to 1.0561, classifying it as a fast rotator.  Since the remnant is rotating, this suggests that some angular momentum from before the collision is conserved even though there is very little gas present.  The classification of the remnant as a fast rotator with a velocity over dispersion ratio much higher than typical ellipticals suggests that the remnant will not be a classic elliptical, but maybe something more like a lenticular galaxy.                
+\end{abstract}
+\section{Introduction} \label{sec:intro}
+
+As is well known throughout the astronomy community, The Milky Way (MW) and Andromeda (M31) are set on a course to collide in a spectacular galaxy merger event $\sim$4-5 billion years from now \citep{2012ApJ...753....8V}.  This galaxy merger is classified as a major merger given that the colliding spiral galaxies have approximately the same mass. Luckily, we can determine what this collision will look like and how the aftermath (i.e. the merger remnant) will behave dynamically through simulations.  Specifically, they allow for the analysis of the stellar kinematics of the remnant.  The stellar remnant's kinematical properties such as its velocity dispersion $\sigma$, the spread of velocities around the average velocity of the stars, can allow for the determination of whether the remnant will be a fast or slow rotator.  A fast rotator is defined as a system where velocity and dispersion are quite similar (V/$\sigma$ $\rightarrow$ 1), whereas a slow rotator is a system that is dispersion dominated (V/$\sigma$ \textless 0.6). 
+
+
+Analyzing the stellar kinematics of a major merger remnant is incredibly important to our understanding of galaxies and galaxy evolution.  A galaxy is defined by \cite{2012AJ....144...76W} as: \textit{A gravitationally bound set of stars whose properties cannot be explained by the combination of baryons and Newton's laws of gravity}.  Galaxy evolution is the study of how galactic properties (such as the stars, morphology, internal kinematics, black hole, gas content etc.) change over time. A major merger event of two spiral galaxies such as that of the MW and M31 will drastically alter the galactic properties of both galaxies, especially their internal kinematics.  Generally, early-type galaxies (ellipticals) have more random stellar motions whereas the stars of late-type galaxies (spirals) have more structured rotational motions.  Depending on the type of binary merger event, like whether it is a "wet" merger (the coalescence of two gas-rich spiral galaxies) or "dry" merger (the coalescence of two gas-poor galaxies), the kinematics of the merger remnant can have numerous possibilities.  A wet merger can supply the amount of gas needed to conserve the angular momentum of the system for the remnant to have a significant amount of rotation.  It also is currently believed to lead to the formation of low luminosity ellipticals.   However, the kinematics of a dry merger event (such as the MW/M31 collision) are not believed to be the same.        
+
+Since the MW/M31 merger will be "dry", it is theorized that the collision will increase the velocity dispersion of the system and the remnant will not have the gas needed to conserve angular momentum.  A current dominating theory for wet mergers is referred to as the "merger hypothesis", which states that the merging of two equal-mass, gas rich spiral galaxies forms an elliptical galaxy \citep{1972ApJ...178..623T}.  This is supported by \cite{2006ApJ...650..791C} who used numerical simulations to study the kinematics of major merger events between gas-rich and gas-poor mergers (referred to as dissipational and dissipationless respectively in the paper).  As shown in Figure 1, they found that the simulations of gas-rich major mergers with masses 20 times smaller or 30 times larger than $\sim$ 10\textsuperscript{12}$M_{\odot}$ successfully replicated the observed kinematic properties of more massive ellipticals while gas-poor remnants did not.   
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.55]{Cox_figure.png}
+    \caption{Histogram of (V/$\sigma$) for both gas-poor (blue) and gas-rich (red) remnant simulations overplotted with data from observed ellipticals and spheroids (black).  The red and black histograms are much more similar than the blue one, thus supporting that the simulations of the gas-rich mergers better emulated the stellar motions of ellipticals. \citep{2006ApJ...650..791C}.}
+    \label{fig:my_label}
+\end{figure}
+
+Many of the open questions in this field have to do with the accuracy of the "merger hypothesis" predicting the correct formation of ellipticals, as well as the uncertainty of the outcome of a dry merger event.  For example, one thing that the merger hypothesis does not account for is what happens to a galaxy's dark matter halo during a merger event. \cite{2003Sci...301.1696R} simulated a lack of a dark matter halo to match the velocity dispersion profiles observed in some intermediate luminosity ellipticals. As for the uncertainty of the remnant of a dry merger, there is a particular focus on the outcome of the Milky Way and M31 merger.  Some open questions in the field are: \textit{What will the Milky Way and M31 remnant look like?} \textit{Will it form an elliptical, or something entirely different?} and \textit{How will the merger remnant behave kinematically?}  Currently, astrophysicists attempt to answer these questions through numerical integration simulations to allow us to "see" into the future of the system after the collision.  These simulations include assumptions of physics that follow Newton's laws of gravity as well as Cold Dark Matter Theory (the theory that dark matter only interacts with matter gravitationally).    
+
+\section{This Project} \label{sec:style}
+
+This paper will be focusing on some specific aspects of the stellar kinematics well after the MW and M31 have coalesced, specifically at Snapshot 800 which is $\sim$12 Gyr from now.  I plan on using simulation data to determine whether the remnant is rotating, as well as whether the remnant will be a fast or slow rotator.  The stellar kinematics to be analyzed will be the average velocity of particles as a function of position, as well as the dispersion of the velocities as a function of position.
+
+Following the description above, I plan to address how the stellar merger remnant will behave kinematically in this project, specifically in terms of velocity dispersion and rotation.  I also plan to address whether it will behave like a classic elliptical.  
+
+In terms of galaxy evolution, studying how the merger remnant behaves kinematically after the galaxies have become one allows us to take into account that the interactions of galaxies with each other can drastically change the morphology and dynamics of each. This study will help lessen the uncertainty surrounding the outcome of a dry merger event, like whether the remnant is rotating, and if it is rotation or dispersion dominated like ellipticals.  
+
+\section{Methodology} \label{sec:style}
+
+The simulation data used in this paper was generated by \cite{2012ApJ...753....8V} who used it to determine the velocity vector of M31 with respect to the Milky Way.  One part of their project was using an N-body model, a simulation of the motions of N particles under the influence of gravity in this case, to simulate the internal mechanics of M31. They used their simulation to determine the trajectory and behaviors of the MW, M31, and M33.        
+
+I will determine whether the remnant is rotating by orienting the remnant so that its angular momentum vector is along the z direction, then creating a phase diagram to analyze the out-of-page velocity component along each axis.  I will also determine whether it is a fast or slow rotator by calculating the (V/$\sigma$) ratio along a given axis for the remnant, where V is the average velocity along that axis.  Figure 2 shows a phase diagram of the velocity component oriented out of the page vs. a position axis for the Milky Way at Snapshot 000.    
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.36]{MWDiskVelocity.png}
+    \caption{Phase diagram of MW's y-component of velocity vs. x-component of position.  You can determine the mean velocity (shown in red) and the velocity dispersion ($\sigma_{y}$ in magenta and $\sigma_{tot}$ in blue) along the axis using a diagram like this.  There is clearly rotation here since the velocity has two very prominent positive and negative velocity peaks.}
+    \label{fig:my_label}
+\end{figure}
+
+My code first orients the remnant so that its angular momentum vector is along the z-axis using the RotateFrame function from Lab 7.  The code then uses the VelocityMeansandDispersions function to calculate the average out of page velocity: 
+\begin{equation}
+    \bar{V} = \sum_{i=1}^{N} \frac{V_i}{N}\
+\end{equation}
+along an axis where $\V_i$ is the out of page velocity for the i-th disk star within a cube of dimensions dx, dy, dz along the specified axis and N is the total number of disk stars within the cube. Then it calculates the dispersion about that average velocity in all 3 dimensions ($\sigma_{x}$, $\sigma_{y}$, $\sigma_{z}$): 
+\begin{equation}
+    \sigma =\sqrt{\frac{1}{N-1}\sum_{i=1}^N(V_i-\bar{V})^2}   
+\end{equation}
+and stores all calculated quantities in arrays as output. The code then calculates the ratio of $\frac{\bar{V_{\perp}}}{\sigma_{\perp}}$ and $\frac{\bar{V_{\perp}}}{\sigma_{tot}}$ where $\bar{V_{\perp}}$ is the average of the out of page velocity component, $\sigma_{\perp}$ is the component dispersion around the average out of page velocity, and $\sigma_{tot}$ is the total 3D dispersion about $\bar{V_{\perp}}$.  It then finds the maximum velocity value of the average velocity array and takes the ratio of that value with its corresponding dispersion to get the ratio that determines whether the remnant is rotation or dispersion dominated.  
+
+One of the plots created will be a phase diagram of $V_y$ vs x with the $\bar{V_y}$ as a function of x plotted on top to determine if the remnant is rotating.  If it is, the average velocity will be higher than zero on one side and lower than zero on the other.  The other plots that will be created are $\frac{\bar{V_y}}{\sigma_y}$ vs x and $\frac{\bar{V_y}}{\sigma_{tot}}$.  This will be used to show whether the remnant is dispersion dominated and if it is a fast or slow rotator.
+
+I believe that the MW/M31 remnant will be rotating since both the MW and M31 have their own angular momentum, then there is no possible way it will be devoid of angular momentum.  As for the classification of whether the remnant will be a fast or slow rotator, I believe that it will be a slow rotator since the merger between M31 and the MW will have very little gas to conserve a significant amount of rotation.
+
+
+\section{Results} \label{sec:style}
+
+%Dont forget to put in figures 3 and 4.
+%Fig 3 = phase diagram of vy vs x for remnant 
+%Fig 4 = combo of meanvy/sigmay and meanvy/sigmatot for remnant
+
+Figure 3 shows a phase diagram of the remnant's $V_y$ component along the x axis with the average $\bar{V_y}$, $\sigma_{y}$, and $\sigma_{tot}$ as a function of x plotted on top, much like that of the present Milky Way in Figure 2.  Though it is not quite as prominent as the peaks seen in Figure 2, the mean velocity along the x-axis in the remnant has a peak above and below zero.  This tells us that the remnant is in fact rotating about the z-axis.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.35]{RemnantDiskVelocityField.png}
+    \caption{Phase diagram of the MW/M31 remnant's y-component of velocity in (km/s) vs. x-component of position in kpc.  The mean velocity (in red), dispersion in $V_y$ (in magenta), and total dispersion (in blue) along the axis is overplotted.  The average velocity $\bar{V_y}$ peaks above and below zero, meaning that the remnant is rotating about the z-axis.}
+    \label{fig:my_label}
+\end{figure}
+
+Figure 4 shows the ratio of the average $V_y$ over $\sigma_{y}$ and average $V_y$ over $\sigma_{tot}$ along the x-axis.  There is a negative and positive peak that is not $\sim$0 in the ratio in both plots, further confirming that remnant is rotating.  This also implies that the remnant is not only rotating, but its rotation dominates its dispersion.
+
+The calculated ratio for $\frac{Vy_{max}}{\sigma_y}$ of the remnant is:
+\begin{equation}
+    \frac{Vy_{max}}{\sigma_y} = 2.1768
+\end{equation}
+and the calculated ratio for $\frac{Vy_{max}}{\sigma_{tot}}$ of the remnant is:
+\begin{equation}
+    \frac{Vy_{max}}{\sigma_{tot}} = 1.0561
+\end{equation}
+In both cases, these results classify the remnant as a fast rotator.
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.35]{RemnantVoverSig.png}
+    \caption{The left panel is a diagram of the MW/M31 remnant's $\frac{\bar{V_y}}{\sigma_y}$ ratio vs. x-component of position in kpc.
+    The right panel is a diagram of the MW/M31 remnant's $\frac{\bar{V_y}}{\sigma_{tot}}$ ratio vs. x-component of position in kpc. The remnant does not seem to be dispersion dominated since the V/$\sigma$ ratio is not close to zero along the entire x axis.}
+    \label{fig:my_label}
+\end{figure}
+
+\section{Discussion} \label{sec:style}
+
+The stellar disk remnant of the MW and M31 major merger will be rotating well after the event occurs, thus agreeing with the initial hypothesis.  It is currently theorized that the Milky Way and Andromeda merger will yield a giant elliptical galaxy. We know the motions of stars in classic ellipticals are quite randomized with no structured rotation, i.e. they are generally dispersion supported.  We can gather from Figure 3 that the remnant does exhibit some rotation around an axis, which tells us that the aftermath of a dry major merger like MW/M31 will be elliptical-like in behavior.
+
+The result that the remnant would be a fast rotator contradicts my initial hypothesis. I believed that there would be some rotation, but not enough to the point where the system would be rotation dominated.  To put it into context, the $\frac{Vy_{max}}{\sigma_{tot}}$ ratio I calculated for the Milky Way in the present (i.e. while it is still a rotating spiral galaxy) is 4.1733. Most classical ellipticals have a $\frac{V_{max}}{\sigma} \leq$ 1, and are classified as fast or slow rotators based on the $\frac{V_{max}}{\sigma}$ \textless 0.6 threshold.  They are also mostly dispersion dominated so it was surprising to find such a high rotation to dispersion ratio.  This leads me to believe that the MW and M31 merging event will not necessarily form a classical elliptical, but something between a spiral and an elliptical, like a lenticular galaxy.  This hypothesis could be generalized to help solidify the outcome of a dry major merger of two spiral galaxies to being some kind of lenticular galaxy.
+
+\section{Conclusions} \label{sec:style}
+The major merger collision between the Milky Way and the Andromeda galaxy will greatly alter the stellar kinematics and structure of each respective galaxy.  The outcome of a dry major merging event such as this does not have a solid theory behind it, but simulating the collision through N-body simulations can help us determine how the motions of stars will be affected.  In this paper, I sought to answer the questions of whether the remnant will be rotating and whether it would be a fast or slow rotator.  The findings from this help us classify the remnant and determine whether its stellar motions will be dominated by rotation or dispersion.
+
+In agreement with the first hypothesis made, the remnant will be rotating.  This is an important finding on its own because that means that there is some sort of angular momentum conservation for the system even though neither galaxy has an abundance of gas. So the main source of why wet mergers often yield significant rotation is not the source of rotation for the MW/M31 remnant.
+
+In disagreement with the second hypothesis made, the remnant will be a fast rotator.  This means that the remnant will not result in a classic elliptical where the body is slowly rotating and dispersion dominated.  It also means that the remnant may have a bit of a "disky" shape rather than the completely blob-like shape of an elliptical.  Instead, it seems like it will result in some kind of combination of a spiral and an elliptical galaxy, perhaps like a lenticular galaxy.
+
+In the future, I would like to further confirm that the remnant will be a fast rotator by looking at the average velocity and dispersion as function of radius (distance from the center of the remnant) rather than just around an axis and repeating the calculation of finding the ratio of the maximum average velocity to its dispersion.  I would also like to further explore the possibility that the remnant could be a lenticular galaxy through comparing the remnant's kinematics to those observed in lenticulars.
+
+\section{Acknowledgements} \label{sec:style}
+I would like to acknowledge Dr. Gurtina Besla and Rixin Li for giving this project direction and giving helpful coding tips for making the calculations and plots used in this paper and in my final code.  I would also like to acknowledge my cohort who have slipped into madness with me and have helped me debug my code: Mackenzie James, Sammie Mackie, Jimmy Lilly, Ryan Webster, Emily Walla, Steven Zhou-Wright, and Sean Cunningham.  I would also like to acknowledge the \cite{ 2013A&A...558A..33A}, \cite{Hunter:2007}, and \cite{van_der_Walt_2011} for the development of the astropy, numpy, and matplotlib libraries that were used extensively in this project.
+
+
+\bibliography{sample63}{}
+\bibliographystyle{aasjournal}
+
+
+
+\end{document}
+
+
